@@ -1,0 +1,109 @@
+@startuml
+interface oop.tugas.interfaces.Penghijauan {
+~ boolean defaultPenghijauan()
+~ boolean fotosintesis(double)
+~ void tumbuhDaun(double)
+~ void rontokDaun(double)
+}
+class oop.tugas.concretes.buah.BuahDurian {
++ Rasa ubahRasa()
++ UmurBuah ubahUmurBuah()
+}
+abstract class oop.tugas.abstracts.Buah {
++ UkuranTumbuh beratBuah
++ int kematian
++ Rasa rasa
++ UmurBuah umurBuah
+# int umur
++ {abstract}Rasa ubahRasa()
++ {abstract}UmurBuah ubahUmurBuah()
++ UkuranTumbuh tumbuh(double)
+}
+class oop.tugas.concretes.kalkulasi.UkuranTumbuh {
+- double ukuran
+- double kecepatan
+- double percepatan
++ UkuranTumbuh tumbuh(double)
++ void setKecepatan(double)
++ void setPercepatan(double)
++ void setUkuran(double)
++ double getKecepatan()
++ double getPercepatan()
++ double getUkuran()
+}
+class oop.tugas.concretes.main.Pertanian {
++ {static} void main(String[])
+}
+class oop.tugas.concretes.buah.BuahRambutan {
++ Rasa ubahRasa()
++ UmurBuah ubahUmurBuah()
+}
+interface oop.tugas.interfaces.Komoditas {
+~ boolean defaultKomoditas()
+~ int getHarga()
+~ void setHarga(int)
+}
+class oop.tugas.concretes.pohon.PohonRambutan {
+- int hargaPerKiloBuah
+- int indexBuah
++ int getHarga()
++ void setHarga(int)
++ boolean fotosintesis(double)
++ void tumbuhDaun(double)
++ void rontokDaun(double)
++ void generateBuah(int,int)
++ void print()
+}
+class oop.tugas.concretes.kalkulasi.Randomizer {
+- {static} Random random
++ {static} int get(int,int)
++ {static} boolean get()
++ {static} double get(double,double)
+}
+class oop.tugas.concretes.kalkulasi.Printer {
+- {static} int SPACELEN
++ {static} void separator(position)
++ {static} void header(String)
++ {static} void data(String,Object)
+}
+abstract class oop.tugas.abstracts.Tumbuhan {
+- {static} int idCounter
+# ArrayList<M> fruits
+# UkuranTumbuh batangPokok
+# UkuranTumbuh daun
+- int kematian
+- String name
+- int id
++ int totalOksigen
++ int totalKarbondioksida
+- double indeksFotosintesis
+# int umur
+- {static} int getIdCounter()
++ String getName()
++ boolean tumbuh(double)
++ ArrayList<M> petikBuah(Predicate<M>)
++ {abstract}void generateBuah(int,int)
++ {abstract}void print()
+}
+class oop.tugas.concretes.pohon.PohonDurian {
+- int hargaPerKiloBuah
+- int indexBuah
++ int getHarga()
++ void setHarga(int)
++ boolean fotosintesis(double)
++ void tumbuhDaun(double)
++ void rontokDaun(double)
++ void generateBuah(int,int)
++ void print()
+}
+
+
+oop.tugas.abstracts.Buah <|-- oop.tugas.concretes.buah.BuahDurian
+oop.tugas.abstracts.Buah <|-- oop.tugas.concretes.buah.BuahRambutan
+oop.tugas.interfaces.Komoditas <|.. oop.tugas.concretes.pohon.PohonRambutan
+oop.tugas.interfaces.Penghijauan <|.. oop.tugas.concretes.pohon.PohonRambutan
+oop.tugas.abstracts.Tumbuhan <|-- oop.tugas.concretes.pohon.PohonRambutan
+oop.tugas.interfaces.Komoditas <|.. oop.tugas.concretes.pohon.PohonDurian
+oop.tugas.interfaces.Penghijauan <|.. oop.tugas.concretes.pohon.PohonDurian
+oop.tugas.abstracts.Tumbuhan <|-- oop.tugas.concretes.pohon.PohonDurian
+@enduml
